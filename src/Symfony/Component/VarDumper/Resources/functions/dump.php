@@ -38,6 +38,11 @@ if (!function_exists('dd')) {
             VarDumper::dump($v);
         }
 
+        $debug = debug_backtrace();
+        $targetLine = $debug[0]['line'];
+        $targetFile = $debug[0]['file'];
+        VarDumper::dump(sprintf("%s@%s ",base_path($targetFile),$targetLine));
+        
         exit(1);
     }
 }
